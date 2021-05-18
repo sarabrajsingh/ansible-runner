@@ -301,7 +301,8 @@ def run_command(executable_cmd, cmdline_args=None, **kwargs):
     :param runner_mode: The applicable values are ``pexpect`` and ``subprocess``. If the value of ``input_fd`` parameter
                         is set or the executable command is one of ``ansible-config``, ``ansible-doc`` or ``ansible-galaxy``
                         the default value is set to ``subprocess`` else in other cases it is set to ``pexpect``.
-    :param cwd: The current working directory from which the command in executable_cmd shoul be be executed.
+    :param host_cwd: The host current working directory to be mounted within the container (if enabled) and will be
+                     the work directory within container.
     :param envvars: Environment variables to be used when running Ansible. Environment variables will also be
                     read from ``env/envvars`` in ``private_data_dir``
     :param passwords: A dictionary containing password prompt patterns and response values used when processing output from
@@ -338,7 +339,7 @@ def run_command(executable_cmd, cmdline_args=None, **kwargs):
     :type output_fd: file descriptor
     :type error_fd: file descriptor
     :type runner_mode: str
-    :type cwd: str
+    :type host_cwd: str
     :type envvars: dict
     :type passwords: dict
     :type settings: dict
@@ -425,7 +426,8 @@ def get_plugin_docs(plugin_names, plugin_type=None, response_format=None, snippe
     :param module_path: This parameter is prepend colon-separated path(s) to module library
                         (default=~/.ansible/plugins/modules:/usr/share/ansible/plugins/modules).
     :param runner_mode: The applicable values are ``pexpect`` and ``subprocess``. Default is set to ``subprocess``.
-    :param cwd: The current working directory from which the command in executable_cmd should be be executed.
+    :param host_cwd: The host current working directory to be mounted within the container (if enabled) and will be
+                     the work directory within container.
     :param envvars: Environment variables to be used when running Ansible. Environment variables will also be
                     read from ``env/envvars`` in ``private_data_dir``
     :param passwords: A dictionary containing password prompt patterns and response values used when processing output from
@@ -463,7 +465,7 @@ def get_plugin_docs(plugin_names, plugin_type=None, response_format=None, snippe
     :type playbook_dir: str
     :type module_path: str
     :type runner_mode: str
-    :type cwd: str
+    :type host_cwd: str
     :type envvars: dict
     :type passwords: dict
     :type settings: dict
@@ -530,7 +532,8 @@ def get_plugin_list(list_files=None, response_format=None, plugin_type=None, pla
     :param module_path: This parameter is prepend colon-separated path(s) to module library
                         (default=~/.ansible/plugins/modules:/usr/share/ansible/plugins/modules).
     :param runner_mode: The applicable values are ``pexpect`` and ``subprocess``. Default is set to ``subprocess``.
-    :param cwd: The current working directory from which the command in executable_cmd should be be executed.
+    :param host_cwd: The host current working directory to be mounted within the container (if enabled) and will be
+                     the work directory within container.
     :param envvars: Environment variables to be used when running Ansible. Environment variables will also be
                     read from ``env/envvars`` in ``private_data_dir``
     :param passwords: A dictionary containing password prompt patterns and response values used when processing output from
@@ -567,7 +570,7 @@ def get_plugin_list(list_files=None, response_format=None, plugin_type=None, pla
     :type playbook_dir: str
     :type module_path: str
     :type runner_mode: str
-    :type cwd: str
+    :type host_cwd: str
     :type envvars: dict
     :type passwords: dict
     :type settings: dict
@@ -635,7 +638,8 @@ def get_inventory(action, inventories, response_format=None, host=None, playbook
     :param vault_ids: The vault identity to use.
     :param vault_password_file: The vault password files to use.
     :param runner_mode: The applicable values are ``pexpect`` and ``subprocess``. Default is set to ``subprocess``.
-    :param cwd: The current working directory from which the command in executable_cmd should be be executed.
+    :param host_cwd: The host current working directory to be mounted within the container (if enabled) and will be
+                     the work directory within container.
     :param envvars: Environment variables to be used when running Ansible. Environment variables will also be
                     read from ``env/envvars`` in ``private_data_dir``
     :param passwords: A dictionary containing password prompt patterns and response values used when processing output from
@@ -674,7 +678,7 @@ def get_inventory(action, inventories, response_format=None, host=None, playbook
     :type vault_ids: str
     :type vault_password_file: str
     :type runner_mode: str
-    :type cwd: str
+    :type host_cwd: str
     :type envvars: dict
     :type passwords: dict
     :type settings: dict
@@ -739,7 +743,7 @@ def get_ansible_config(action, config_file=None, only_changed=None, **kwargs):
     :param only_changed: The boolean value when set to ``True`` returns only the configurations that have changed
                          from the default. This parameter is applicable only when ``action`` is set to ``dump``.
     :param runner_mode: The applicable values are ``pexpect`` and ``subprocess``. Default is set to ``subprocess``.
-    :param cwd: The current working directory from which the command in executable_cmd should be be executed.
+    :param host_cwd: The current working directory from which the command in executable_cmd should be be executed.
     :param envvars: Environment variables to be used when running Ansible. Environment variables will also be
                     read from ``env/envvars`` in ``private_data_dir``
     :param passwords: A dictionary containing password prompt patterns and response values used when processing output from Ansible.
@@ -774,7 +778,7 @@ def get_ansible_config(action, config_file=None, only_changed=None, **kwargs):
     :type config_file: str
     :type only_changed: bool
     :type runner_mode: str
-    :type cwd: str
+    :type host_cwd: str
     :type envvars: dict
     :type passwords: dict
     :type settings: dict
